@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bma8wx0r4k420"]
+[gd_scene load_steps=10 format=3 uid="uid://bma8wx0r4k420"]
 
 [ext_resource type="Script" uid="uid://ovyimmcbkbcd" path="res://scenes/menus/local_lobby.gd" id="1_drhds"]
 [ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_u2wr6"]
 [ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/menus/scaling_button.gd" id="2_oo2sm"]
+[ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="4_ugofe"]
+[ext_resource type="Texture2D" uid="uid://dqrueosqu5dij" path="res://assets/player-markers/circle.svg" id="5_eaos3"]
+[ext_resource type="Texture2D" uid="uid://b7k0j8pirpsmc" path="res://assets/menu-icons/press_start.svg" id="6_6ubrc"]
+[ext_resource type="Texture2D" uid="uid://u8nriuwvyom2" path="res://assets/player-markers/triangle.svg" id="7_eaos3"]
+[ext_resource type="Texture2D" uid="uid://dc3620nycq6eu" path="res://assets/player-markers/hexagon.svg" id="8_w5ewo"]
+[ext_resource type="Texture2D" uid="uid://ci8esn5gj5idw" path="res://assets/player-markers/square.svg" id="9_6ubrc"]
 
 [node name="LocalLobby" type="Control"]
 layout_mode = 3
@@ -53,3 +59,124 @@ theme = ExtResource("1_u2wr6")
 theme_override_font_sizes/font_size = 96
 text = "Start"
 script = ExtResource("2_oo2sm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -200.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 360
+alignment = 1
+
+[node name="Player 1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Player 1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_u2wr6")
+theme_override_font_sizes/font_size = 64
+text = "P1"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Player 1"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Circle" type="Sprite2D" parent="HBoxContainer/Player 1/Control"]
+material = ExtResource("4_ugofe")
+instance_shader_parameters/player_color = Color(0.36862746, 0.56078434, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_eaos3")
+
+[node name="PressStart" type="Sprite2D" parent="HBoxContainer/Player 1/Control"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_6ubrc")
+
+[node name="Player 2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Player 2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_u2wr6")
+theme_override_font_sizes/font_size = 64
+text = "P2"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Player 2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Triangle" type="Sprite2D" parent="HBoxContainer/Player 2/Control"]
+material = ExtResource("4_ugofe")
+instance_shader_parameters/player_color = Color(1, 0.454, 0.37, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_eaos3")
+
+[node name="PressStart" type="Sprite2D" parent="HBoxContainer/Player 2/Control"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_6ubrc")
+
+[node name="Player 3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Player 3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_u2wr6")
+theme_override_font_sizes/font_size = 64
+text = "P3"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Player 3"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Hexagon" type="Sprite2D" parent="HBoxContainer/Player 3/Control"]
+material = ExtResource("4_ugofe")
+instance_shader_parameters/player_color = Color(0.37, 1, 0.63250005, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_w5ewo")
+
+[node name="PressStart" type="Sprite2D" parent="HBoxContainer/Player 3/Control"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_6ubrc")
+
+[node name="Player 4" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Player 4"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_u2wr6")
+theme_override_font_sizes/font_size = 64
+text = "P4"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Player 4"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Square" type="Sprite2D" parent="HBoxContainer/Player 4/Control"]
+material = ExtResource("4_ugofe")
+instance_shader_parameters/player_color = Color(1, 0.9895, 0.37, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6ubrc")
+
+[node name="PressStart" type="Sprite2D" parent="HBoxContainer/Player 4/Control"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_6ubrc")
