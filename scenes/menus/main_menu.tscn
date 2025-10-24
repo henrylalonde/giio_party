@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvukqdsai43i8"]
+
+[ext_resource type="Script" uid="uid://cr5xvd2b3jrtv" path="res://scenes/menus/main_menu.gd" id="1_hj162"]
+[ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_nl8w3"]
+[ext_resource type="PackedScene" uid="uid://bma8wx0r4k420" path="res://scenes/menus/local_lobby.tscn" id="2_6bivr"]
+[ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/menus/scaling_button.gd" id="3_xn6kt"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hj162")
+local_lobby = ExtResource("2_6bivr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -306.0
+offset_right = 344.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nl8w3")
+theme_override_font_sizes/font_size = 128
+text = "giiO Party"
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -65.0
+offset_right = 122.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Settings")
+theme = ExtResource("1_nl8w3")
+theme_override_font_sizes/font_size = 92
+text = "Play"
+script = ExtResource("3_xn6kt")
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 80.0
+offset_right = 138.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Exit")
+theme = ExtResource("1_nl8w3")
+text = "Settings"
+script = ExtResource("3_xn6kt")
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 186.0
+offset_right = 62.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Play")
+theme = ExtResource("1_nl8w3")
+text = "Exit"
+script = ExtResource("3_xn6kt")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bma8wx0r4k420"]
+
+[ext_resource type="Script" uid="uid://ovyimmcbkbcd" path="res://scenes/menus/local_lobby.gd" id="1_drhds"]
+[ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_u2wr6"]
+[ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/menus/scaling_button.gd" id="2_oo2sm"]
+
+[node name="LocalLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drhds")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -133.0
+offset_right = 228.0
+offset_bottom = -61.0
+grow_vertical = 0
+theme = ExtResource("1_u2wr6")
+text = "Back"
+script = ExtResource("2_oo2sm")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.5
+offset_top = -211.0
+offset_right = 127.5
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_u2wr6")
+theme_override_font_sizes/font_size = 96
+text = "Start"
+script = ExtResource("2_oo2sm")

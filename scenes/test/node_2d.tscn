@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5lm6xv7mwiwu"]
+
+[ext_resource type="Texture2D" uid="uid://ci8esn5gj5idw" path="res://assets/player-markers/square.svg" id="1_0e48y"]
+[ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="1_q6r6c"]
+[ext_resource type="Script" uid="uid://di6776w6yltap" path="res://scenes/test/square.gd" id="2_epypp"]
+[ext_resource type="Texture2D" uid="uid://u8nriuwvyom2" path="res://assets/player-markers/triangle.svg" id="3_epypp"]
+[ext_resource type="Texture2D" uid="uid://dc3620nycq6eu" path="res://assets/player-markers/hexagon.svg" id="4_0hol4"]
+[ext_resource type="Texture2D" uid="uid://dqrueosqu5dij" path="res://assets/player-markers/circle.svg" id="6_fft1c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Square" type="Sprite2D" parent="."]
+material = ExtResource("1_q6r6c")
+instance_shader_parameters/player_color = Color(1, 0.9895, 0.37, 1)
+position = Vector2(1798, 398)
+texture = ExtResource("1_0e48y")
+script = ExtResource("2_epypp")
+
+[node name="Triangle" type="Sprite2D" parent="."]
+material = ExtResource("1_q6r6c")
+instance_shader_parameters/player_color = Color(1, 0.454, 0.37, 1)
+position = Vector2(639, 396)
+texture = ExtResource("3_epypp")
+
+[node name="Hexagon" type="Sprite2D" parent="."]
+material = ExtResource("1_q6r6c")
+instance_shader_parameters/player_color = Color(0.37, 1, 0.63250005, 1)
+position = Vector2(1210, 388)
+texture = ExtResource("4_0hol4")
+
+[node name="Circle" type="Sprite2D" parent="."]
+material = ExtResource("1_q6r6c")
+instance_shader_parameters/player_color = Color(0.37, 0.559, 1, 1)
+position = Vector2(95, 400)
+texture = ExtResource("6_fft1c")
