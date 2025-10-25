@@ -1,6 +1,6 @@
 extends Control
 
-var local_lobby: PackedScene = load("res://scenes/menus/local_lobby.tscn")
+var local_lobby: PackedScene = load("res://scenes/menus/local-menu/local_lobby.tscn")
 
 @onready var play_button: Button = $Play
 @onready var settings_button: Button = $Settings

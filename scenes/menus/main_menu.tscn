@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvukqdsai43i8"]
+[gd_scene load_steps=4 format=3 uid="uid://dvukqdsai43i8"]
 
 [ext_resource type="Script" uid="uid://cr5xvd2b3jrtv" path="res://scenes/menus/main_menu.gd" id="1_hj162"]
 [ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_nl8w3"]
-[ext_resource type="PackedScene" uid="uid://bma8wx0r4k420" path="res://scenes/menus/local_lobby.tscn" id="2_6bivr"]
 [ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/menus/scaling_button.gd" id="3_xn6kt"]
 
 [node name="MainMenu" type="Control"]
@@ -13,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hj162")
-local_lobby = ExtResource("2_6bivr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -15,12 +15,19 @@ run/main_scene="uid://dvukqdsai43i8"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://cqy2d38ms7v4m"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [input]
 
