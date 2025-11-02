@@ -1,49 +1,98 @@
 extends Node
+class_name ControllerButtons
 
 var device: int
 
-# 2D array with elements [button, function]
-var press_buttons: Array
-
-# 2D array with elements [button, press_function, release_function, was_pressed: bool]
-var press_release_buttons: Array
-
-# 2D array with elements [button, unction, cooldown, timer]
-var press_repeating: Array
-
+var press_buttons: Dictionary[JoyButton, Callable]
 
 func bind_press(button: JoyButton, function: Callable) -> void:
-	press_buttons.append([button, function])
+	press_buttons[button] = function
 
+func unbind_press(button: JoyButton) -> bool:
+	var result: bool = press_buttons.erase(button)
+	return result
+
+
+enum JustPress {FUNCTION, WAS_PRESSED}
+
+var just_press_buttons: Dictionary[JoyButton, Dictionary]
+
+func bind_just_press(button: JoyButton, function: Callable) -> void:
+	just_press_buttons[button] = {
+		JustPress.FUNCTION: function,
+		JustPress.WAS_PRESSED: false
+	}
+
+func unbind_just_press(button: JoyButton) -> bool:
+	var result: bool = just_press_buttons.erase(button)
+	return result
+
+
+enum PressRelease {PRESS_FUNCTION, RELEASE_FUNCTION, WAS_PRESSED}
+
+var press_release_buttons: Dictionary[JoyButton, Dictionary]
 
 func bind_press_release(button: JoyButton, press_function: Callable, release_function: Callable) -> void:
-	press_release_buttons.append([button, press_function, release_function, false])
+	press_release_buttons[button] = {
+		PressRelease.PRESS_FUNCTION: press_function,
+		PressRelease.RELEASE_FUNCTION: release_function,
+		PressRelease.WAS_PRESSED: false
+	}
+
+func unbind_press_release(button: JoyButton) -> bool:
+	var result: bool = press_release_buttons.erase(button)
+	return result
 
 
-func bind_press_repeating(button: JoyButton, function: Callable, cooldown: float) -> void:
-	press_repeating.append([button, function, cooldown, 0.0])
+
+enum PressRepeat {REPEAT_FUNCTION, COOLDOWN, HOLD_TIMER}
+var press_repeat_buttons: Dictionary[JoyButton, Dictionary]
+
+func bind_press_repeat(button: JoyButton, function: Callable, cooldown: float) -> void:
+	press_repeat_buttons[button] = {
+		PressRepeat.REPEAT_FUNCTION: function,
+		PressRepeat.COOLDOWN: cooldown,
+		PressRepeat.HOLD_TIMER: 0.0
+	}
+
+func unbind_press_repeating(button: JoyButton) -> bool:
+	var result: bool = press_repeat_buttons.erase(button)
+	return result
+
 
 
 func _process(delta: float) -> void:
-	for binding in press_buttons:
-		if Input.is_joy_button_pressed(device, binding[0]):
-			binding[1].call()
+	for button in press_buttons:
+		if Input.is_joy_button_pressed(device, button):
+			press_buttons[button].call(delta)
 	
-	for binding in press_release_buttons:
-		if Input.is_joy_button_pressed(device, binding[0]):
-			if not binding[3]:
-				binding[3] = true
-				binding[1].call()
+	for button in just_press_buttons:
+		var params = just_press_buttons[button]
+		if Input.is_joy_button_pressed(device, button):
+			if not params[JustPress.WAS_PRESSED]:
+				params[JustPress.WAS_PRESSED] = true
+				params[JustPress.FUNCTION].call()
 		else:
-			if binding[3]:
-				binding[2].call()
+			params[JustPress.WAS_PRESSED] = false
 	
-	for binding in press_repeating:
-		if Input.is_joy_button_pressed(device, binding[0]):
-			if binding[3] <= 0.0:
-				binding[3] = binding[2]
-				binding[1].call()
+	for button in press_release_buttons:
+		var params = press_release_buttons[button]
+		if Input.is_joy_button_pressed(device, button):
+			if not params[PressRelease.WAS_PRESSED]:
+				params[PressRelease.WAS_PRESSED] = true
+				params[PressRelease.PRESS_FUNCTION].call()
+		else:
+			if params[PressRelease.WAS_PRESSED]:
+				params[PressRelease.WAS_PRESSED] = false
+				params[PressRelease.RELEASE_FUNCTION].call()
+	
+	for button in press_repeat_buttons:
+		var params = press_repeat_buttons[button]
+		if Input.is_joy_button_pressed(device, button):
+			if params[PressRepeat.HOLD_TIMER] <= 0.0:
+				params[PressRepeat.HOLD_TIMER] = params[PressRepeat.COOLDOWN]
+				params[PressRepeat.REPEAT_FUNCTION].call()
 			else:
-				binding[3] -= delta
+				params[PressRepeat.HOLD_TIMER] -= delta
 		else:
-			binding[3] = 0.0
+			params[PressRepeat.HOLD_TIMER] = 0.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkq7jkqdvvams"]
+[gd_scene load_steps=6 format=3 uid="uid://dkq7jkqdvvams"]
 
 [ext_resource type="Script" uid="uid://cwrn2lj4eth87" path="res://scenes/menus/local-menu/lobby_player.gd" id="1_p0qj2"]
 [ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_q4v6n"]
 [ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="2_p0qj2"]
 [ext_resource type="Texture2D" uid="uid://be5c31thfn1di" path="res://assets/menu-icons/press_a.svg" id="4_q4v6n"]
+[ext_resource type="PackedScene" uid="uid://rbir2wtaq78p" path="res://scenes/contoller/controller_buttons.tscn" id="5_p0qj2"]
 
 [node name="Player 1" type="VBoxContainer"]
 anchors_preset = 8
@@ -35,12 +36,14 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="PressA" type="Sprite2D" parent="Control"]
+modulate = Color(1, 1, 1, 0.43529412)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_q4v6n")
+
 [node name="ShapeSprite" type="Sprite2D" parent="Control"]
 material = ExtResource("2_p0qj2")
 instance_shader_parameters/player_color = Color(1, 1, 1, 1)
 scale = Vector2(0.5, 0.5)
 
-[node name="PressA" type="Sprite2D" parent="Control"]
-modulate = Color(1, 1, 1, 0.43529412)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_q4v6n")
+[node name="ControllerButtons" parent="." instance=ExtResource("5_p0qj2")]
