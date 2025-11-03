@@ -27,9 +27,8 @@ void fragment() {
 	vec4 input_color = texture(TEXTURE, UV);
 	vec3 input_color_hsv = rgb2hsv(input_color.rgb);
 	vec3 player_color_hsv = rgb2hsv(player_color.rgb);
-	float is_magenta = 1.0 - abs(input_color_hsv.x - magenta_hue);
-	float magenta_distance = 1.0 - distance(input_color.rgb, magenta);
-	magenta_distance = magenta_distance * magenta_distance;
+	float is_magenta = 1.0 - smoothstep(0.0, 0.05, abs(input_color_hsv.x - magenta_hue));
+	float magenta_distance = is_magenta * (1.0 - distance(input_color.rgb, magenta));
 	
 	vec3 target_color = input_color_hsv;
 	target_color.x += is_magenta * (player_color_hsv.x - input_color_hsv.x);
