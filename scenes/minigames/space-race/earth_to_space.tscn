@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://fsl150oh0ihx"]
+
+[ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="1_7nopa"]
+[ext_resource type="PackedScene" uid="uid://cpmxdygbhytfk" path="res://scenes/minigames/space-race/space_ship.tscn" id="1_bmknr"]
+[ext_resource type="Texture2D" uid="uid://ci8esn5gj5idw" path="res://assets/player-markers/square.svg" id="2_djbb0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l3bde"]
+
+[node name="EarthToSpace" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(956, 982)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_l3bde")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+material = ExtResource("1_7nopa")
+instance_shader_parameters/player_color = Color(0.84599996, 1, 0.78, 1)
+position = Vector2(8, 227)
+scale = Vector2(4.490234, 1)
+texture = ExtResource("2_djbb0")
+
+[node name="SpaceShip" parent="." instance=ExtResource("1_bmknr")]
+
+[node name="Camera2D" type="Camera2D" parent="SpaceShip"]
+zoom = Vector2(0.5, 0.5)

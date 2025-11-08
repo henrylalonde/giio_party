@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://cpmxdygbhytfk"]
+
+[ext_resource type="Script" uid="uid://3i3erx6uxrbb" path="res://scenes/minigames/space-race/space_ship.gd" id="1_7mrdi"]
+[ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="2_24yny"]
+[ext_resource type="Texture2D" uid="uid://mqwmc5q0v5u4" path="res://assets/space-icons/space-shuttle.svg" id="2_u74vo"]
+
+[sub_resource type="Gradient" id="Gradient_u74vo"]
+offsets = PackedFloat32Array(0.5650794, 0.62857145)
+colors = PackedColorArray(1, 1, 1, 0.78039217, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_24yny"]
+gradient = SubResource("Gradient_u74vo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_5jlgt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.58536583, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_itvyj"]
+curve = SubResource("Curve_5jlgt")
+
+[sub_resource type="Curve" id="Curve_24yny"]
+_limits = [0.0, 10.247505, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 10.247505), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jlgt"]
+curve = SubResource("Curve_24yny")
+
+[sub_resource type="Curve" id="Curve_u74vo"]
+_data = [Vector2(0, 0.2379505), 0.0, 0.0, 0, 0, Vector2(0.12195122, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.63083166), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_24yny"]
+curve = SubResource("Curve_u74vo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87xha"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 575.54
+initial_velocity_max = 812.95
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_24yny")
+color = Color(1, 0.78, 0.39999998, 1)
+alpha_curve = SubResource("CurveTexture_itvyj")
+emission_curve = SubResource("CurveTexture_5jlgt")
+turbulence_enabled = true
+turbulence_influence_min = 0.053000003
+turbulence_influence_max = 0.07300001
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u74vo"]
+radius = 137.0
+height = 510.0
+
+[node name="SpaceShip" type="RigidBody2D"]
+linear_damp = 1.0
+script = ExtResource("1_7mrdi")
+
+[node name="LeftThrusterPoint" type="Node2D" parent="."]
+position = Vector2(-108, 246)
+
+[node name="LeftSmoke" type="GPUParticles2D" parent="LeftThrusterPoint"]
+emitting = false
+amount = 32
+texture = SubResource("GradientTexture2D_24yny")
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_87xha")
+
+[node name="RightThrusterPoint" type="Node2D" parent="."]
+position = Vector2(108, 246)
+
+[node name="RightSmoke" type="GPUParticles2D" parent="RightThrusterPoint"]
+emitting = false
+amount = 32
+texture = SubResource("GradientTexture2D_24yny")
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_87xha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_24yny")
+instance_shader_parameters/player_color = Color(1, 0.64, 0.6, 1)
+texture = ExtResource("2_u74vo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u74vo")
