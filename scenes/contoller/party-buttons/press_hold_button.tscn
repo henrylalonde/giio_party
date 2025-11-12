@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqyf7yr2kukxm"]
+
+[ext_resource type="Script" uid="uid://cy5rquelo4yk5" path="res://scenes/contoller/party-buttons/press_hold_button.gd" id="1_1e0wq"]
+[ext_resource type="Texture2D" uid="uid://be5c31thfn1di" path="res://assets/menu-icons/press_a.svg" id="1_dgo7c"]
+[ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_l0csb"]
+
+[node name="PressHoldButton" type="Button"]
+offset_right = 256.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_l0csb")
+icon = ExtResource("1_dgo7c")
+script = ExtResource("1_1e0wq")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+max_value = 1.0
+step = 0.0
+value = 1.0

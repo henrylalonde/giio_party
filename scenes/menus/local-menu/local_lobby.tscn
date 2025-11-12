@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bma8wx0r4k420"]
+[gd_scene load_steps=7 format=3 uid="uid://bma8wx0r4k420"]
 
 [ext_resource type="Script" uid="uid://ovyimmcbkbcd" path="res://scenes/menus/local-menu/local_lobby.gd" id="1_drhds"]
+[ext_resource type="PackedScene" uid="uid://bqyf7yr2kukxm" path="res://scenes/contoller/party-buttons/press_hold_button.tscn" id="2_wdsk0"]
+[ext_resource type="Texture2D" uid="uid://smv0p7qskhh3" path="res://assets/menu-icons/back_x.svg" id="3_tmuta"]
+[ext_resource type="Texture2D" uid="uid://cptsn7v73ynue" path="res://assets/menu-icons/press_b.svg" id="4_tmuta"]
+[ext_resource type="Texture2D" uid="uid://hlmsx7vk7i0g" path="res://assets/menu-icons/play.svg" id="5_4plni"]
+[ext_resource type="Texture2D" uid="uid://b7k0j8pirpsmc" path="res://assets/menu-icons/press_start.svg" id="6_31ccc"]
 
 [node name="LocalLobby" type="Control"]
 layout_mode = 3
@@ -22,13 +27,83 @@ color = Color(0, 0, 0, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = -1
+anchor_top = 0.166
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -200.0
-offset_bottom = -128.0
+anchor_bottom = 0.667
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 360
 alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" parent="." instance=ExtResource("2_wdsk0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -256.0
+offset_right = 245.0
+offset_bottom = 0.0
+grow_vertical = 0
+scale = Vector2(0.45, 0.45)
+pivot_offset = Vector2(128, 128)
+size_flags_horizontal = 0
+icon = ExtResource("3_tmuta")
+joy_button_shortcut = 1
+
+[node name="PressB" type="TextureRect" parent="BackButton"]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -128.0
+offset_right = 384.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("4_tmuta")
+
+[node name="StartButton" parent="." instance=ExtResource("2_wdsk0")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(128, 128)
+icon = ExtResource("5_4plni")
+joy_button_shortcut = 6
+
+[node name="PressStart" type="TextureRect" parent="StartButton"]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("6_31ccc")

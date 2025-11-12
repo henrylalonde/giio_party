@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr5xvd2b3jrtv" path="res://scenes/menus/main_menu.gd" id="1_hj162"]
 [ext_resource type="Theme" uid="uid://c8sfecofw72pd" path="res://resources/ui/main_theme.tres" id="1_nl8w3"]
-[ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/menus/scaling_button.gd" id="3_xn6kt"]
+[ext_resource type="Script" uid="uid://bd6r68k1qsqdi" path="res://scenes/contoller/party-buttons/scaling_button.gd" id="3_xn6kt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,10 +52,12 @@ offset_right = 122.0
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(122, 52)
 focus_neighbor_top = NodePath("../Exit")
 focus_neighbor_bottom = NodePath("../Settings")
 theme = ExtResource("1_nl8w3")
 theme_override_font_sizes/font_size = 92
+shortcut_in_tooltip = false
 text = "Play"
 script = ExtResource("3_xn6kt")
 
@@ -72,6 +74,7 @@ offset_right = 138.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(138, 36)
 focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Exit")
 theme = ExtResource("1_nl8w3")
@@ -91,6 +94,7 @@ offset_right = 62.0
 offset_bottom = 258.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(62, 36)
 focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Play")
 theme = ExtResource("1_nl8w3")

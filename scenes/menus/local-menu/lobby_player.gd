@@ -22,6 +22,7 @@ var joined: bool = false
 var color: Color
 const HUE_CHANGE_SPEED: float = 0.25
 
+var shape: CompressedTexture2D
 var shape_index: int
 var shape_tween: Tween
 var shape_sprite_scale: Vector2
@@ -33,12 +34,14 @@ var scale_multiplier: float = 1.1
 
 func dpad_down(): 
 	shape_index = (shape_index + 1) % shapes.size()
-	shape_sprite.texture = shapes[shape_index]
+	shape = shapes[shape_index]
+	shape_sprite.texture = shape
 
 
 func dpad_up():
 	shape_index = (shape_index - 1) % shapes.size()
-	shape_sprite.texture = shapes[shape_index]
+	shape = shapes[shape_index]
+	shape_sprite.texture = shape
 	
 
 func dpad_left(delta: float): 
@@ -93,7 +96,8 @@ func unjoin() -> void:
 func reset_shape():
 	shape_sprite.hide()
 	shape_index = device
-	shape_sprite.texture = shapes[shape_index]
+	shape = shapes[shape_index]
+	shape_sprite.texture = shape
 	color = palette.colors[device]
 	shape_sprite.set_instance_shader_parameter("player_color", color)
 

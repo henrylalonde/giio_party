@@ -3,6 +3,8 @@ class_name ControllerButtons
 
 var device: int
 
+
+
 var press_buttons: Dictionary[JoyButton, Callable]
 
 func bind_press(button: JoyButton, function: Callable) -> void:
@@ -14,7 +16,6 @@ func unbind_press(button: JoyButton) -> bool:
 
 
 enum JustPress {FUNCTION, WAS_PRESSED}
-
 var just_press_buttons: Dictionary[JoyButton, Dictionary]
 
 func bind_just_press(button: JoyButton, function: Callable) -> void:
@@ -29,7 +30,6 @@ func unbind_just_press(button: JoyButton) -> bool:
 
 
 enum PressRelease {PRESS_FUNCTION, RELEASE_FUNCTION, WAS_PRESSED}
-
 var press_release_buttons: Dictionary[JoyButton, Dictionary]
 
 func bind_press_release(button: JoyButton, press_function: Callable, release_function: Callable) -> void:

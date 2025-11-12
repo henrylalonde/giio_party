@@ -7,7 +7,6 @@ var tween: Tween
 var original_scale: Vector2
 
 func _ready() -> void:
-	pivot_offset = size / 2
 	mouse_entered.connect(embiggen)
 	mouse_exited.connect(regular_size)
 	focus_entered.connect(embiggen)
