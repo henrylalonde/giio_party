@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpmxdygbhytfk"]
+[gd_scene load_steps=15 format=3 uid="uid://cpmxdygbhytfk"]
 
 [ext_resource type="Script" uid="uid://3i3erx6uxrbb" path="res://scenes/minigames/space-race/space_ship.gd" id="1_7mrdi"]
 [ext_resource type="Material" uid="uid://c6kokgunt7k46" path="res://resources/shaders/color_changer.tres" id="2_24yny"]
 [ext_resource type="Texture2D" uid="uid://mqwmc5q0v5u4" path="res://assets/space-icons/space-shuttle.svg" id="2_u74vo"]
+[ext_resource type="Texture2D" uid="uid://dqrueosqu5dij" path="res://assets/player-markers/circle.svg" id="4_24yny"]
 
 [sub_resource type="Gradient" id="Gradient_u74vo"]
 offsets = PackedFloat32Array(0.5650794, 0.62857145)
@@ -83,10 +84,17 @@ randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_87xha")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_24yny")
-instance_shader_parameters/player_color = Color(1, 0.64, 0.6, 1)
-texture = ExtResource("2_u74vo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u74vo")
+
+[node name="ShuttleSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_24yny")
+instance_shader_parameters/player_color = Color(0.83, 0.55319494, 0.2573, 1)
+texture = ExtResource("2_u74vo")
+
+[node name="ShapeSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_24yny")
+instance_shader_parameters/player_color = Color(0.83137256, 0.5529412, 0.25882354, 1)
+position = Vector2(0, 122)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_24yny")

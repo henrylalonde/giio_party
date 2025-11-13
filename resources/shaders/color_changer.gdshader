@@ -33,6 +33,7 @@ void fragment() {
 	vec3 target_color = input_color_hsv;
 	target_color.x += is_magenta * (player_color_hsv.x - input_color_hsv.x);
 	target_color.y += magenta_distance * (player_color_hsv.y - input_color_hsv.y);
+	target_color.z += magenta_distance * (player_color_hsv.z - input_color_hsv.z);
 	target_color = hsv2rgb(target_color);
 	
 	COLOR = vec4(target_color, input_color.a);

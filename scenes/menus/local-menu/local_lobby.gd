@@ -1,6 +1,7 @@
 extends Control
 
 var main_menu: PackedScene = load("res://scenes/menus/main_menu.tscn")
+var game_scene: PackedScene = load("res://scenes/minigames/space-race/space_race.tscn")
 var lobby_player: PackedScene = load("res://scenes/menus/local-menu/lobby_player.tscn")
 
 @onready var player_container: HBoxContainer = $HBoxContainer
@@ -46,6 +47,7 @@ func start_game() -> void:
 		PlayerSheet.players[id].joined = true
 		PlayerSheet.players[id].color = player.color
 		PlayerSheet.players[id].shape = player.shape
+		PlayerSheet.players[id].device = id
 		PlayerSheet.players[id].score = 0
 		player_count += 1
 	
@@ -53,6 +55,7 @@ func start_game() -> void:
 		print("You can't play with only " + str(player_count) + " players!")
 	else:
 		print("Game Started")
+		get_tree().change_scene_to_packed(game_scene)
 	
 
 func exit_to_main_menu() -> void:

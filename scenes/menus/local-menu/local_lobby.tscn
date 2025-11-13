@@ -70,6 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(128, 128)
+mouse_filter = 2
 texture = ExtResource("4_tmuta")
 
 [node name="StartButton" parent="." instance=ExtResource("2_wdsk0")]
@@ -106,4 +107,5 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(128, 128)
+mouse_filter = 2
 texture = ExtResource("6_31ccc")

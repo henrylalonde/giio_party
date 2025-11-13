@@ -7,6 +7,8 @@ var local_lobby: PackedScene = load("res://scenes/menus/local-menu/local_lobby.t
 @onready var exit_button: Button = $Exit
 
 func _ready() -> void:
-	play_button.grab_focus()
+	if Input.get_connected_joypads():
+		play_button.grab_focus()
+	
 	play_button.pressed.connect(func (): get_tree().change_scene_to_packed(local_lobby))
 	exit_button.pressed.connect(get_tree().quit)
