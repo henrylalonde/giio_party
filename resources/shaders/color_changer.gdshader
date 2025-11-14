@@ -1,9 +1,10 @@
 shader_type canvas_item;
 render_mode unshaded;
 
-instance uniform vec4 player_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+instance uniform vec4 player_color: source_color = vec4(1.0);
 const vec3 magenta = vec3(1.0, 0.0, 1.0);
 const float magenta_hue = 300.0 / 360.0;
+const float tolerance = 0.05;
 
 vec3 rgb2hsv(vec3 c)
 {
@@ -23,18 +24,22 @@ vec3 hsv2rgb(vec3 c)
     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
+// COLOR is sRGB
+// player_color is Linear
+
 void fragment() {
-	vec4 input_color = texture(TEXTURE, UV);
-	vec3 input_color_hsv = rgb2hsv(input_color.rgb);
-	vec3 player_color_hsv = rgb2hsv(player_color.rgb);
-	float is_magenta = 1.0 - smoothstep(0.0, 0.05, abs(input_color_hsv.x - magenta_hue));
-	float magenta_distance = is_magenta * (1.0 - distance(input_color.rgb, magenta));
+	vec3 input_color_hsv = rgb2hsv(COLOR.rgb);
+	vec3 player_color_srgb = pow(player_color.rgb, vec3(1.0/2.2)); // convert linear uniform to srgb
+	vec3 player_color_hsv = rgb2hsv(player_color_srgb);
+	float is_magenta = 1.0 - step(tolerance, abs(input_color_hsv.x - magenta_hue));
+	float magenta_distance = is_magenta * (1.0 - distance(COLOR.rgb, magenta));
 	
-	vec3 target_color = input_color_hsv;
-	target_color.x += is_magenta * (player_color_hsv.x - input_color_hsv.x);
-	target_color.y += magenta_distance * (player_color_hsv.y - input_color_hsv.y);
-	target_color.z += magenta_distance * (player_color_hsv.z - input_color_hsv.z);
+	vec3 target_color = vec3(
+		mix(input_color_hsv.x, player_color_hsv.x, is_magenta),
+		mix(input_color_hsv.y, player_color_hsv.y, magenta_distance),
+		mix(input_color_hsv.z, player_color_hsv.z, magenta_distance)
+	);
 	target_color = hsv2rgb(target_color);
 	
-	COLOR = vec4(target_color, input_color.a);
+	COLOR = vec4(target_color, COLOR.a);
 }

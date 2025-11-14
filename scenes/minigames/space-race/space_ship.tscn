@@ -89,12 +89,12 @@ shape = SubResource("CapsuleShape2D_u74vo")
 
 [node name="ShuttleSprite" type="Sprite2D" parent="."]
 material = ExtResource("2_24yny")
-instance_shader_parameters/player_color = Color(0.83, 0.55319494, 0.2573, 1)
+instance_shader_parameters/player_color = Color(1, 0.6666667, 0.30980393, 1)
 texture = ExtResource("2_u74vo")
 
 [node name="ShapeSprite" type="Sprite2D" parent="."]
 material = ExtResource("2_24yny")
-instance_shader_parameters/player_color = Color(0.83137256, 0.5529412, 0.25882354, 1)
+instance_shader_parameters/player_color = Color(1, 0.6666667, 0.30980393, 1)
 position = Vector2(0, 122)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_24yny")
