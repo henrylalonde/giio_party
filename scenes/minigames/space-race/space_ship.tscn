@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqrueosqu5dij" path="res://assets/player-markers/circle.svg" id="4_24yny"]
 
 [sub_resource type="Gradient" id="Gradient_u74vo"]
-offsets = PackedFloat32Array(0.5650794, 0.62857145)
+offsets = PackedFloat32Array(0.5587302, 0.6507937)
 colors = PackedColorArray(1, 1, 1, 0.78039217, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_24yny"]
@@ -22,16 +22,15 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_itvyj"]
 curve = SubResource("Curve_5jlgt")
 
-[sub_resource type="Curve" id="Curve_24yny"]
-_limits = [0.0, 10.247505, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 10.247505), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_24yny"]
+offsets = PackedFloat32Array(0, 0.20481928, 0.43373495)
+colors = PackedColorArray(1, 0.4666667, 0, 1, 1, 0.823, 0.41000003, 1, 1, 1, 1, 1)
 
-[sub_resource type="CurveTexture" id="CurveTexture_5jlgt"]
-curve = SubResource("Curve_24yny")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5jlgt"]
+gradient = SubResource("Gradient_24yny")
 
 [sub_resource type="Curve" id="Curve_u74vo"]
-_data = [Vector2(0, 0.2379505), 0.0, 0.0, 0, 0, Vector2(0.12195122, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.63083166), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.2379505), 0.0, 0.0, 0, 0, Vector2(0.12195122, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.59357363), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_24yny"]
@@ -47,9 +46,8 @@ gravity = Vector3(0, 98, 0)
 scale_min = 0.5
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_24yny")
-color = Color(1, 0.78, 0.39999998, 1)
+color_ramp = SubResource("GradientTexture1D_5jlgt")
 alpha_curve = SubResource("CurveTexture_itvyj")
-emission_curve = SubResource("CurveTexture_5jlgt")
 turbulence_enabled = true
 turbulence_influence_min = 0.053000003
 turbulence_influence_max = 0.07300001
